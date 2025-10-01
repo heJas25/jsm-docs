@@ -10,7 +10,8 @@ interface SearchParamProps {
   };
 }
 
-const Document = async ({ params: { id } }: SearchParamProps) => {
+const Document = async ({ params }: SearchParamProps) => {
+  const { id } = params;
   try {
     // 1. Vérification de l'utilisateur
     const clerkUser = await currentUser();
