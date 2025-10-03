@@ -18,7 +18,6 @@ const ColabRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => {
 
                         </div>
                         <SignedOut>
-
                             <SignInButton />
                         </SignedOut>
                         <SignedIn>
