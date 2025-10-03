@@ -7,11 +7,12 @@ import { liveblocks } from "../liveblocks";
 export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
   try {
     // On accède directement à la méthode getUserList
-    const clerkUsers = await clerkClient.users.getUserList({
+    const {data} = await clerkClient.users.getUserList({
       emailAddresses: userIds,
     });
 
-    const formattedUsers = clerkUsers.map((user) => ({
+
+    const users = data.map((user) => ({
       id: user.id,
       name: `${user.firstName} ${user.lastName}`,
       email: user.emailAddresses[0].emailAddress,
@@ -19,7 +20,7 @@ export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
     }));
 
     const sortedUsers = userIds.map((email) => 
-      formattedUsers.find((user) => user.email === email)
+      users.find((user) => user.email === email)
     );
 
     return parseStringify(sortedUsers);

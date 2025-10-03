@@ -4,6 +4,7 @@ import { Editor } from '@/components/editor/Editor'
 import Header from '@/components/Header'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
 import { ClientSideSuspense, RoomProvider } from "@liveblocks/react/suspense"
+import ActiveCollaborators from './ActiveCollaborators'
 
 const ColabRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => {
     return (
@@ -15,7 +16,7 @@ const ColabRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => {
                             <p className='document-title'>Document</p>
                         </div>
                         <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
-
+                          <ActiveCollaborators/>
                         </div>
                         <SignedOut>
                             <SignInButton />
