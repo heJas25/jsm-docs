@@ -2,7 +2,7 @@ import { useOthers } from '@liveblocks/react/suspense'
 import React from 'react'
 import Image from 'next/image';
 const ActiveCollaborators = () => {
-    const others = useOthers();
+    const others = useOthers();//liveblocks hook to get other users
     const collaborators = others.map((other) => other.info);
     return (
         <ul>
