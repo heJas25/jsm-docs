@@ -141,3 +141,17 @@ export const deleteDocument = async (roomId: string) => {
     console.log(`Error happened while deleting a room: ${error}`);
   }
 }
+
+export const updateDocumentTitle = async (roomId: string, title: string) => {
+  try {
+    const updatedRoom =await liveblocks.updateRoom(roomId,{
+      metadata:{
+        title
+      }
+    })
+    revalidatePath(`/documents/${roomId}`);
+  return parseStringify(updatedRoom);
+  }catch(error) {
+    console.error("somthing happend while updating document title",error);
+  }
+}
